@@ -1,4 +1,4 @@
-package fr.sg.cib.gbto.entities;
+package fr.sg.cib.gbto.domain;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -12,13 +12,13 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Statement {
+public class StatementEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
     @JoinColumn(name = "account_id", nullable = false)
-    private Account account;
+    private AccountEntity accountEntity;
     private LocalDateTime operationDate;
     private double amount;
     private double balance;

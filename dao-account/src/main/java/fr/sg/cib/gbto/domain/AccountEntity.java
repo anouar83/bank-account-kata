@@ -1,4 +1,4 @@
-package fr.sg.cib.gbto.entities;
+package fr.sg.cib.gbto.domain;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -13,7 +13,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Account {
+public class AccountEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,5 +21,5 @@ public class Account {
     @Column(nullable = false)
     private double balance;
     @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
-    private List<Statement> statements = new ArrayList<>();
+    private List<StatementEntity> statementEntities = new ArrayList<>();
 }

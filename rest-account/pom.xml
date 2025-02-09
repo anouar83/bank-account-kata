@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>fr.sg.cib.gbto</groupId>
-        <artifactId>bank-account-kata</artifactId>
+        <artifactId>bank-accountEntity-kata</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>rest-account</artifactId>
-    <name>rest-account</name>
+    <artifactId>rest-accountEntity</artifactId>
+    <name>rest-accountEntity</name>
     <url>http://maven.apache.org</url>
 
     <dependencies>
