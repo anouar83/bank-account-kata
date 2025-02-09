@@ -15,4 +15,14 @@ public class StatementMapper {
         statementEntity.setOperationType(statement.getOperationType());
         return statementEntity;
     }
+
+    public Statement toStatementDto(StatementEntity statementEntity) {
+        return Statement.builder()
+                .id(statementEntity.getId())
+                .amount(statementEntity.getAmount())
+                .balance(statementEntity.getBalance())
+                .operationDate(statementEntity.getOperationDate())
+                .operationType(statementEntity.getOperationType())
+                .build();
+    }
 }

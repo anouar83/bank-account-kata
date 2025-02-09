@@ -63,8 +63,8 @@ class StatementDaoAdapterTest {
         // When
         when(statementRepository.findByAccountId(1L)).thenReturn(statementEntities);
 
-        when(statementMapper.toStatementEntity(statementEntity1)).thenReturn(statement);
-        when(statementMapper.toStatementEntity(statementEntity2)).thenReturn(statement);
+        when(statementMapper.toStatementDto(statementEntity1)).thenReturn(statement);
+        when(statementMapper.toStatementDto(statementEntity2)).thenReturn(statement);
 
         List<Statement> result = statementDaoAdapter.findByAccountId(1L);
 

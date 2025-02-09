@@ -22,8 +22,9 @@ public class AccountDaoAdapter implements AccountDao{
     }
 
     @Override
-    public void save(Account bankAccount) {
+    public Account save(Account bankAccount) {
         AccountEntity accountEntity =  accountMapper.toAccountEntity(bankAccount);
-        accountRepository.save(accountEntity);
+        AccountEntity savedAccountEntity = accountRepository.save(accountEntity);
+        return accountMapper.toAccountDto(savedAccountEntity);
     }
 }

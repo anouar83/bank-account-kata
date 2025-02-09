@@ -33,7 +33,7 @@ public class StatementDaoAdapter implements StatementDao {
     public List<Statement> findByAccountId(Long accountId) {
         return statementRepository.findByAccountId(accountId)
                 .stream()
-                .map(statementMapper::toStatementEntity)
+                .map(statementMapper::toStatementDto)
                 .collect(Collectors.toList());
     }
 }

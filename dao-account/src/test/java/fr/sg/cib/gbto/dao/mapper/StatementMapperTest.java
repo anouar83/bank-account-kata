@@ -34,6 +34,22 @@ class StatementMapperTest {
         assertEquals(statement.getOperationType(), result.getOperationType());
     }
 
+    @Test
+    void testToStatementDto() {
+        // Given
+        StatementEntity statementEntity = buildStatementEntity();
+        // When
+        Statement result = statementMapper.toStatementDto(statementEntity);
+
+        // Then
+        assertNotNull(result);
+
+        assertEquals(statementEntity.getAmount(), result.getAmount());
+        assertEquals(statementEntity.getBalance(), result.getBalance());
+        assertEquals(statementEntity.getOperationDate(), result.getOperationDate());
+        assertEquals(statementEntity.getOperationType(), result.getOperationType());
+    }
+
     private Statement buildStatement() {
         return Statement.builder()
                 .amount(100.0)
