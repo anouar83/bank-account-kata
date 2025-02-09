@@ -42,11 +42,11 @@ class AccountDaoAdapterTest {
         when(accountRepository.findById(1L)).thenReturn(Optional.of(accountEntity));
         when(accountMapper.toAccountDto(accountEntity)).thenReturn(accountDto);
 
-        Account result = accountDaoAdapter.findById(1L);
+        Optional<Account> result = accountDaoAdapter.findById(1L);
 
         assertNotNull(result);
-        assertEquals(1L, result.getId());
-        assertEquals(1000.0, result.getBalance());
+        assertEquals(1L, result.get().getId());
+        assertEquals(1000.0, result.get().getBalance());
 
         verify(accountRepository, times(1)).findById(1L);
         verify(accountMapper, times(1)).toAccountDto(accountEntity);
@@ -58,10 +58,10 @@ class AccountDaoAdapterTest {
         when(accountRepository.findById(2L)).thenReturn(Optional.empty());
 
         //When
-        Account result = accountDaoAdapter.findById(2L);
+        Optional<Account> result = accountDaoAdapter.findById(2L);
 
         //Then
-        assertNull(result);
+        assert(result).isEmpty();
         verify(accountRepository, times(1)).findById(2L);
     }
 

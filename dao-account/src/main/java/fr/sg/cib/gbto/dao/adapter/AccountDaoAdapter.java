@@ -7,6 +7,8 @@ import fr.sg.cib.gbto.domain.AccountEntity;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @AllArgsConstructor
 public class AccountDaoAdapter implements AccountDao{
@@ -14,10 +16,9 @@ public class AccountDaoAdapter implements AccountDao{
     private AccountRepository accountRepository;
     private AccountMapper accountMapper;
     @Override
-    public Account findById(long accountId) {
+    public Optional<Account> findById(long accountId) {
         return accountRepository.findById(accountId)
-                .map(accountMapper::toAccountDto)
-                .orElse(null);
+                .map(accountMapper::toAccountDto);
     }
 
     @Override
