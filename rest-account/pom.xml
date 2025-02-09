@@ -3,15 +3,20 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>fr.sg.cib.gbto</groupId>
-        <artifactId>bank-accountEntity-kata</artifactId>
+        <artifactId>bank-account-kata</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>rest-accountEntity</artifactId>
-    <name>rest-accountEntity</name>
+    <artifactId>rest-account</artifactId>
+    <name>rest-account</name>
     <url>http://maven.apache.org</url>
 
     <dependencies>
 
+        <dependency>
+            <groupId>fr.sg.cib.gbto</groupId>
+            <artifactId>service-account</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>

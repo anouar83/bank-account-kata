@@ -8,16 +8,16 @@
         <relativePath/>
     </parent>
     <groupId>fr.sg.cib.gbto</groupId>
-    <artifactId>bank-accountEntity-kata</artifactId>
+    <artifactId>bank-account-kata</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>bank-accountEntity-kata</name>
+    <name>bank-account-kata</name>
     <description>Kata bank accountEntity</description>
 
     <modules>
-        <module>dao-accountEntity</module>
-        <module>service-accountEntity</module>
-        <module>rest-accountEntity</module>
+        <module>dao-account</module>
+        <module>service-account</module>
+        <module>rest-account</module>
     </modules>
 
     <properties>
