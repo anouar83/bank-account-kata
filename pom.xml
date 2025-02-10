@@ -12,7 +12,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>bank-account-kata</name>
-    <description>Kata bank accountEntity</description>
+    <description>Kata bank account</description>
 
     <modules>
         <module>dao-account</module>

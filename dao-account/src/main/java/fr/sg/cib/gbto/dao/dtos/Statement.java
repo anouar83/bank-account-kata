@@ -1,8 +1,5 @@
 package fr.sg.cib.gbto.dao.dtos;
 
-import fr.sg.cib.gbto.domain.AccountEntity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import lombok.Builder;
 import lombok.Data;
 
