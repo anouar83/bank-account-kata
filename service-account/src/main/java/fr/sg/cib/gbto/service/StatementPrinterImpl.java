@@ -11,9 +11,10 @@ import java.util.List;
 public class StatementPrinterImpl implements StatementPrinter {
     @Override
     public void print(List<AccountStatement> statements) {
-        System.out.println("Date                | Amount  | Balance");
+        System.out.println("Date                | Amount  | Operation type  | Balance");
         statements.stream().map(statement -> statement.getOperationDate() + " | " +
                 statement.getAmount() + " | " +
+                statement.getType() + " | " +
                 statement.getBalance()).forEach(System.out::println);
     }
 }

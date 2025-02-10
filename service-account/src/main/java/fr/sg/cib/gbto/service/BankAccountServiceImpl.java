@@ -27,24 +27,27 @@ public class BankAccountServiceImpl implements BankAccountService {
     private StatementMapper statementMapper;
 
     @Override
+    @Transactional
     public Account withdrawal(Long accountId, double amount) throws BankAccountNotFoundException, BalanceNotSufficientException {
         Account bankAccount = accountDao.findById(accountId)
                 .orElseThrow(() -> new BankAccountNotFoundException("BankAccount not found"));
         if (bankAccount.getBalance() < amount)
             throw new BalanceNotSufficientException("Balance not sufficient");
-        Statement accountOperation = buildStatement(amount, OperationType.WITHDRAWAL.name());
-        statementDao.save(accountOperation, bankAccount);
         bankAccount.setBalance(bankAccount.getBalance() - amount);
+        Statement accountOperation = buildStatement(amount, bankAccount.getBalance(), OperationType.WITHDRAWAL.name());
+        statementDao.save(accountOperation, bankAccount);
         accountDao.save(bankAccount);
         return bankAccount;
     }
 
+    @Override
+    @Transactional
     public Account deposit(Long accountId, double amount) throws BankAccountNotFoundException {
         Account bankAccount = accountDao.findById(accountId)
                 .orElseThrow(() -> new BankAccountNotFoundException("BankAccount not found"));
-        Statement accountOperation = buildStatement(amount, OperationType.DEPOSIT.name());
-        statementDao.save(accountOperation, bankAccount);
         bankAccount.setBalance(bankAccount.getBalance() + amount);
+        Statement accountOperation = buildStatement(amount, bankAccount.getBalance(), OperationType.DEPOSIT.name());
+        statementDao.save(accountOperation, bankAccount);
         accountDao.save(bankAccount);
         return bankAccount;
     }
@@ -57,9 +60,10 @@ public class BankAccountServiceImpl implements BankAccountService {
                 .collect(Collectors.toList());
     }
 
-    private Statement buildStatement(double amount, String operationType) {
+    private Statement buildStatement(double amount, double balance, String operationType) {
         return Statement.builder()
                 .amount(amount)
+                .balance(balance)
                 .operationType(operationType)
                 .operationDate(LocalDateTime.now())
                 .build();

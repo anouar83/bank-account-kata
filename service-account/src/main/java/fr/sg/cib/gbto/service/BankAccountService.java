@@ -8,7 +8,7 @@ import fr.sg.cib.gbto.exceptions.BankAccountNotFoundException;
 import java.util.List;
 
 public interface BankAccountService {
-    Account deposit(Long accountId, double amount) throws BankAccountNotFoundException, BalanceNotSufficientException;
+    Account deposit(Long accountId, double amount) throws BankAccountNotFoundException;
     Account withdrawal(Long accountId, double amount) throws BankAccountNotFoundException, BalanceNotSufficientException;
 
     List<AccountStatement> accountStatement(Long accountId);

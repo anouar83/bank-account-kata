@@ -8,4 +8,6 @@ import lombok.Data;
 public class Account {
     private Long id;
     private double balance;
+
+    private int version;
 }

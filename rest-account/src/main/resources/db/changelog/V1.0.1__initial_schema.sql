@@ -1,6 +1,7 @@
 -- create table "account"
 CREATE TABLE account (
     id BIGSERIAL PRIMARY KEY,
+    version int NOT NULL,
     balance DECIMAL(19,2) NOT NULL DEFAULT 0.00
 );
 

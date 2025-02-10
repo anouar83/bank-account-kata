@@ -20,6 +20,8 @@ public class AccountEntity {
     private Long id;
     @Column(nullable = false)
     private double balance;
+    @Version
+    private int version;
     @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
     private List<StatementEntity> statementEntities = new ArrayList<>();
 }

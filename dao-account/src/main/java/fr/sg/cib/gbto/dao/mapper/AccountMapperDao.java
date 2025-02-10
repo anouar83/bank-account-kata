@@ -11,6 +11,7 @@ public class AccountMapperDao {
         return Account.builder()
                 .id(accountEntity.getId())
                 .balance(accountEntity.getBalance())
+                .version(accountEntity.getVersion())
                 .build();
     }
 
@@ -18,6 +19,7 @@ public class AccountMapperDao {
         AccountEntity accountEntity = new AccountEntity();
         accountEntity.setId(accountDto.getId());
         accountEntity.setBalance(accountDto.getBalance());
+        accountEntity.setVersion(accountDto.getVersion());
         return accountEntity;
     }
 }

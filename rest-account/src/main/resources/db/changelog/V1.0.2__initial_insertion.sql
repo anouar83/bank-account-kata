@@ -1,7 +1,7 @@
 -- Insertion account in table "account"
-INSERT INTO account (balance) VALUES (1000.00);
-INSERT INTO account (balance) VALUES (500.00);
-INSERT INTO account (balance) VALUES (300.00);
+INSERT INTO account (balance, version) VALUES (1000.00, 0);
+INSERT INTO account (balance, version) VALUES (500.00, 0);
+INSERT INTO account (balance, version) VALUES (300.00, 0);
 
 -- Insertion in table "statement"
 
