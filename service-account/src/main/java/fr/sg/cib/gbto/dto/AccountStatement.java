@@ -1,4 +1,4 @@
-package fr.sg.cib.gbto.domain;
+package fr.sg.cib.gbto.dto;
 import lombok.Builder;
 import lombok.Data;
 

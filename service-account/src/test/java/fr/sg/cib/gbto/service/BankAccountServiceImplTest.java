@@ -4,7 +4,7 @@ import fr.sg.cib.gbto.dao.adapter.AccountDao;
 import fr.sg.cib.gbto.dao.adapter.StatementDao;
 import fr.sg.cib.gbto.dao.dtos.Account;
 import fr.sg.cib.gbto.dao.dtos.Statement;
-import fr.sg.cib.gbto.domain.AccountStatement;
+import fr.sg.cib.gbto.dto.AccountStatement;
 import fr.sg.cib.gbto.enums.OperationType;
 import fr.sg.cib.gbto.exceptions.BalanceNotSufficientException;
 import fr.sg.cib.gbto.exceptions.BankAccountNotFoundException;

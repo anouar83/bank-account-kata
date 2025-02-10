@@ -1,6 +1,6 @@
 package fr.sg.cib.gbto.mapper;
 
-import fr.sg.cib.gbto.domain.AccountStatement;
+import fr.sg.cib.gbto.dto.AccountStatement;
 import fr.sg.cib.gbto.dtos.AccountStatementDTO;
 import fr.sg.cib.gbto.enums.OperationType;
 import org.junit.jupiter.api.BeforeEach;
@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class AccountStatementMapperTest {
+class AccountStatementMapperDaoTest {
 
     private AccountStatementMapper accountStatementMapper;
 

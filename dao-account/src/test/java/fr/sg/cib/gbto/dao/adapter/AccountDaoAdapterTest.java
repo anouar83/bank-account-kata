@@ -1,7 +1,7 @@
 package fr.sg.cib.gbto.dao.adapter;
 
 import fr.sg.cib.gbto.dao.dtos.Account;
-import fr.sg.cib.gbto.dao.mapper.AccountMapper;
+import fr.sg.cib.gbto.dao.mapper.AccountMapperDao;
 import fr.sg.cib.gbto.dao.repository.AccountRepository;
 import fr.sg.cib.gbto.domain.AccountEntity;
 import org.junit.jupiter.api.BeforeEach;
@@ -21,7 +21,7 @@ class AccountDaoAdapterTest {
     private AccountRepository accountRepository;
 
     @Mock
-    private AccountMapper accountMapper;
+    private AccountMapperDao accountMapperDao;
 
     @InjectMocks
     private AccountDaoAdapter accountDaoAdapter;
@@ -40,7 +40,7 @@ class AccountDaoAdapterTest {
         Account accountDto = buildAccountDto();
 
         when(accountRepository.findById(1L)).thenReturn(Optional.of(accountEntity));
-        when(accountMapper.toAccountDto(accountEntity)).thenReturn(accountDto);
+        when(accountMapperDao.toAccountDto(accountEntity)).thenReturn(accountDto);
 
         Optional<Account> result = accountDaoAdapter.findById(1L);
 
@@ -49,7 +49,7 @@ class AccountDaoAdapterTest {
         assertEquals(1000.0, result.get().getBalance());
 
         verify(accountRepository, times(1)).findById(1L);
-        verify(accountMapper, times(1)).toAccountDto(accountEntity);
+        verify(accountMapperDao, times(1)).toAccountDto(accountEntity);
     }
 
     @Test
@@ -72,7 +72,7 @@ class AccountDaoAdapterTest {
         AccountEntity accountEntity = buildAccountEntity();
 
         //when
-        when(accountMapper.toAccountEntity(accountDto)).thenReturn(accountEntity);
+        when(accountMapperDao.toAccountEntity(accountDto)).thenReturn(accountEntity);
 
         accountDaoAdapter.save(accountDto);
 

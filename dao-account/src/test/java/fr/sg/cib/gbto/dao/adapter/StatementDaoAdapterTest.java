@@ -2,8 +2,8 @@ package fr.sg.cib.gbto.dao.adapter;
 
 import fr.sg.cib.gbto.dao.dtos.Account;
 import fr.sg.cib.gbto.dao.dtos.Statement;
-import fr.sg.cib.gbto.dao.mapper.AccountMapper;
-import fr.sg.cib.gbto.dao.mapper.StatementMapper;
+import fr.sg.cib.gbto.dao.mapper.AccountMapperDao;
+import fr.sg.cib.gbto.dao.mapper.StatementMapperDao;
 import fr.sg.cib.gbto.dao.repository.StatementRepository;
 import fr.sg.cib.gbto.domain.AccountEntity;
 import fr.sg.cib.gbto.domain.StatementEntity;
@@ -21,9 +21,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class StatementDaoAdapterTest {
     @Mock
-    private StatementMapper statementMapper;
+    private StatementMapperDao statementMapperDao;
     @Mock
-    private AccountMapper accountMapper;
+    private AccountMapperDao accountMapperDao;
 
     @Mock
     private StatementRepository statementRepository;
@@ -43,8 +43,8 @@ class StatementDaoAdapterTest {
         Account account = buildAccountDto();
         AccountEntity accountEntity = buildAccountEntity();
         // When
-        when(statementMapper.toStatementEntity(statement)).thenReturn(statementEntity);
-        when(accountMapper.toAccountEntity(account)).thenReturn(accountEntity);
+        when(statementMapperDao.toStatementEntity(statement)).thenReturn(statementEntity);
+        when(accountMapperDao.toAccountEntity(account)).thenReturn(accountEntity);
 
         statementDaoAdapter.save(statement, account);
 
@@ -63,8 +63,8 @@ class StatementDaoAdapterTest {
         // When
         when(statementRepository.findByAccountId(1L)).thenReturn(statementEntities);
 
-        when(statementMapper.toStatementDto(statementEntity1)).thenReturn(statement);
-        when(statementMapper.toStatementDto(statementEntity2)).thenReturn(statement);
+        when(statementMapperDao.toStatementDto(statementEntity1)).thenReturn(statement);
+        when(statementMapperDao.toStatementDto(statementEntity2)).thenReturn(statement);
 
         List<Statement> result = statementDaoAdapter.findByAccountId(1L);
 

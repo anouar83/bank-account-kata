@@ -5,7 +5,7 @@ import fr.sg.cib.gbto.domain.AccountEntity;
 import org.springframework.stereotype.Service;
 
 @Service
-public class AccountMapper {
+public class AccountMapperDao {
 
     public Account toAccountDto(AccountEntity accountEntity) {
         return Account.builder()

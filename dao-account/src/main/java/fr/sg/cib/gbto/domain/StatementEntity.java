@@ -18,7 +18,7 @@ public class StatementEntity {
     private Long id;
     @ManyToOne
     @JoinColumn(name = "account_id", nullable = false)
-    private AccountEntity accountEntity;
+    private AccountEntity account;
     private LocalDateTime operationDate;
     private double amount;
     private double balance;

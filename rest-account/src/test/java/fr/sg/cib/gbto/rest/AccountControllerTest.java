@@ -1,7 +1,7 @@
 package fr.sg.cib.gbto.rest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import fr.sg.cib.gbto.domain.AccountStatement;
+import fr.sg.cib.gbto.dto.AccountStatement;
 import fr.sg.cib.gbto.dtos.AccountStatementDTO;
 import fr.sg.cib.gbto.dtos.DepositDTO;
 import fr.sg.cib.gbto.dtos.WithdrawDTO;
@@ -19,8 +19,10 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.time.LocalDateTime;
 import java.util.Arrays;
+import java.util.List;
 
 import static org.mockito.ArgumentMatchers.*;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -93,5 +95,23 @@ class AccountControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].id").value(1L))
                 .andExpect(jsonPath("$[0].amount").value(100.0));
+    }
+
+    @Test
+    void testPrintStatement() throws Exception {
+        //Given
+        AccountStatement accountStatement = AccountStatement.builder()
+                .amount(100.0)
+                .type("DEPOSIT")
+                .build();
+        List<AccountStatement> accountStatementList = List.of(accountStatement);
+
+        // When
+        when(bankService.accountStatement(1L)).thenReturn(accountStatementList);
+
+        //Then
+        mockMvc.perform(get("/account/1/statement"))
+                .andExpect(status().isOk());
+        verify(statementPrinter).print(accountStatementList);
     }
 }

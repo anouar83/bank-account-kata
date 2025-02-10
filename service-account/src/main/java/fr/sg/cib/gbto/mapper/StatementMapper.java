@@ -1,7 +1,7 @@
 package fr.sg.cib.gbto.mapper;
 
 import fr.sg.cib.gbto.dao.dtos.Statement;
-import fr.sg.cib.gbto.domain.AccountStatement;
+import fr.sg.cib.gbto.dto.AccountStatement;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;

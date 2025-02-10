@@ -9,13 +9,13 @@ import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class StatementMapperTest {
-    private StatementMapper statementMapper;
+class StatementMapperDaoTest {
+    private StatementMapperDao statementMapperDao;
 
     @BeforeEach
     void setUp() {
         // Initialization mapper
-        statementMapper = new StatementMapper();
+        statementMapperDao = new StatementMapperDao();
     }
 
     @Test
@@ -23,7 +23,7 @@ class StatementMapperTest {
         // Given
         Statement statement = buildStatement();
         // When
-        StatementEntity result = statementMapper.toStatementEntity(statement);
+        StatementEntity result = statementMapperDao.toStatementEntity(statement);
 
         // Then
         assertNotNull(result);
@@ -39,7 +39,7 @@ class StatementMapperTest {
         // Given
         StatementEntity statementEntity = buildStatementEntity();
         // When
-        Statement result = statementMapper.toStatementDto(statementEntity);
+        Statement result = statementMapperDao.toStatementDto(statementEntity);
 
         // Then
         assertNotNull(result);

@@ -7,14 +7,14 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class AccountMapperTest {
+class AccountMapperDaoTest {
 
-    private AccountMapper accountMapper;
+    private AccountMapperDao accountMapperDao;
 
     @BeforeEach
     void setUp() {
         // Initialization mapper
-        accountMapper = new AccountMapper();
+        accountMapperDao = new AccountMapperDao();
     }
 
     @Test
@@ -22,7 +22,7 @@ class AccountMapperTest {
         //Given
         AccountEntity accountEntity = buildAccountEntity();
         //When
-        Account result = accountMapper.toAccountDto(accountEntity);
+        Account result = accountMapperDao.toAccountDto(accountEntity);
         //Then
         assertNotNull(result);
         assertEquals(accountEntity.getId(), result.getId());
@@ -34,7 +34,7 @@ class AccountMapperTest {
         //Given
         Account accountDto = buildAccount();
         //When
-        AccountEntity result = accountMapper.toAccountEntity(accountDto);
+        AccountEntity result = accountMapperDao.toAccountEntity(accountDto);
         //Then
         assertNotNull(result);
         assertEquals(accountDto.getId(), result.getId());

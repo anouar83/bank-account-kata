@@ -5,7 +5,7 @@ import fr.sg.cib.gbto.domain.StatementEntity;
 import org.springframework.stereotype.Service;
 
 @Service
-public class StatementMapper {
+public class StatementMapperDao {
 
     public StatementEntity toStatementEntity(Statement statement) {
         StatementEntity statementEntity = new StatementEntity();

@@ -1,6 +1,6 @@
 package fr.sg.cib.gbto.service;
 
-import fr.sg.cib.gbto.domain.AccountStatement;
+import fr.sg.cib.gbto.dto.AccountStatement;
 
 import java.util.List;
 
